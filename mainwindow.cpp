@@ -20,38 +20,21 @@ void MainWindow::on_OpenFileButton_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
             tr("Open Video"), "/home/ercmos", tr("Video Files (*.avi *.mpg *.mp4 *.*)"));
-    OCV AbreFichero;
-    cv::VideoCapture cap=AbreFichero.OpenVideoFile(fileName.toStdString());
-    if( cap.isOpened() )
-    {
-        ui->OpenFilelabel->setText(fileName);
-        cv::Mat frame, ret, prvs;
-        for (;;)
-        {
-            cap >> frame;
-            if (frame.empty())
-                break;
-            imshow("Frames",frame);
-            if(cv::waitKey(30) >= 0) break;
-        }
-    }
+
+    ui->OpenFilelabel->setText(fileName);
+
+    OCV Manejador_OCV;
+    cv::VideoCapture cap=Manejador_OCV.OpenVideoFile(fileName.toStdString());
+    Manejador_OCV.Play_VideoCapture(cap,"Frames");
 }
 
 void MainWindow::on_WebCamButton_clicked()
 {
-    OCV AbreFichero;
-    cv::VideoCapture cap=AbreFichero.OpenVideoFile(0);
-    if( cap.isOpened() )
-    {
-        ui->OpenFilelabel->setText("Web Cam");
-        cv::Mat frame, ret, prvs;
-        while (1)
-        {
-            cap >> frame;
-            imshow("Frames",frame);
-            if(cv::waitKey(30) >= 0) break;
-        }
-    }
+    ui->OpenFilelabel->setText("Web Cam");
+
+    OCV Manejador_OCV;
+    cv::VideoCapture cap=Manejador_OCV.OpenVideoFile(0);
+    Manejador_OCV.Play_VideoCapture(cap,"Frames");
 }
 
 void MainWindow::on_SequenceButton_clicked()
@@ -64,6 +47,10 @@ void MainWindow::on_SequenceButton_clicked()
 
     ui->OpenFilelabel->setText(dirName);
 
+    OCV Manejador_OCV;
+    cv::VideoCapture cap=Manejador_OCV.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
+    Manejador_OCV.Play_VideoCapture(cap,"Frames");
+/*
     OCV AbreFichero;
 
     cv::VideoCapture cap=AbreFichero.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
@@ -82,9 +69,9 @@ void MainWindow::on_SequenceButton_clicked()
                 break;
             titulo="Frame " + convert.str();
             ui->Frame->setText(QString::fromStdString(titulo));
-            /* + convert.str()*/
+            // + convert.str()
             imshow("Frame ",frame);
             if(cv::waitKey(30) >= 0) break;
         }
-    }
+    }*/
 }

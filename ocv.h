@@ -19,6 +19,7 @@ public:
     cv::VideoCapture OpenVideoFile(std::string dirName, std::string fileName);
     cv::VideoCapture OpenVideoFile(std::string fileName);
     cv::VideoCapture OpenVideoFile(int device);
+    void Play_VideoCapture(cv::VideoCapture cap, std::string WindowName);
 };
 
 #endif // OCV_H

@@ -1,2 +1,2 @@
 # ocv
-Encapsula de funciones OpenCV en una única clase
+Encapsulado de funciones OpenCV en una única clase

@@ -15,34 +15,15 @@ using namespace cv;
 
 /*!
  * \file ocv.cpp
- * \bri1ef OCV::OpenVideoFile as a sequence of images
- * \para1221+m dirName Nombre del Directorio de la secuencia
- * \param fileName ombre base de la secuencia
+ * \brief OCV::OpenVideoFile as a sequence of images
+ * \param dirName Nombre del Directorio de la secuencia
+ * \param fileName nombre base de la secuencia
  * \author ErCmos
- * \return
+ * \return cap VideoCapturer
  */
 VideoCapture OCV::OpenVideoFile(string dirName, string fileName)
 {
-/*
-char* Dataset_Dir( "C:/Data/" ); // Or take it from argv[1]
-cv::Mat normal_matrix;
-std::vector<cv::Mat>* image_stack;
-for( int i=1; i<=endNumber; ++i )
-{
-    // Gives the entire stack of images for you to go through
-    image_stack->push_back(cv::imread(std::format("%s/%03d-capture.png", Dataset, i), CV_LOAD_IMAGE_COLOR));
-
-    normal_matrix = cv::imread(std::format("%s/%03d-capture.png", Dataset, i), CV_LOAD_IMAGE_COLOR);
-}
-*/
-
-/*
- * cv::VideoCapture cap("G:/var/cache/zoneminder/events/1/13/10/21/07/50/00/%3d-capture.jpg");
- * */
-
     VideoCapture cap;
-
-    string ruta = dirName+"/"+fileName;
     string extension = "";
     string fichero = "";
     string temp;
@@ -73,13 +54,10 @@ for( int i=1; i<=endNumber; ++i )
     string secuencia;
 
     ostringstream convert;   // stream used for the conversion
-
     convert << (a-i);      // insert the textual representation of 'Number' in the characters in the stream
-
-    secuencia = convert.str(); // set 'Result' to the contents of the stream
-
+    secuencia = convert.str(); // set 'secuencia' to the contents of the stream
     string ruta2 = dirName+"/"+fichero.substr(0,i)+"%"+secuencia+"d."+extension;
-    //std::string pathToData("c:\\path\\cap_%%08d.bmp"); 8 ceros en la secuencia
+
     cap.open(ruta2);
     return cap;
 }
@@ -88,7 +66,7 @@ for( int i=1; i<=endNumber; ++i )
  * \brief OCV::OpenVideoFile as a single video file
  * \param fileName Video Filename
  * \author ErCmos
- * \return
+ * \return cap VideoCapturer
  */
 VideoCapture OCV::OpenVideoFile(string fileName)
 {
@@ -102,11 +80,35 @@ VideoCapture OCV::OpenVideoFile(string fileName)
  * \brief OCV::OpenVideoFile as device -> WebCam
  * \param device Device Number
  * \author ErCmos
- * \return
+ * \return cap VideoCApturer
  */
+
 VideoCapture OCV::OpenVideoFile(int device)
 {
     VideoCapture cap; /**< Instancia del capturador */
     cap.open(device);
     return cap;
+}
+
+/*!
+ * \file ocv.cpp
+ * \brief OCV::Play_VideoCapture
+ * \param cap VideoCapture
+ * \author ErCmos
+ * \return void
+ */
+void OCV::Play_VideoCapture(VideoCapture cap, string WindowName)
+{
+    cv::Mat frame;
+    if (cap.isOpened())
+    {
+        while (1)
+        {
+            cap >>frame;
+            if (frame.empty())
+                break;
+            imshow(WindowName,frame);
+            if(cv::waitKey(30) >= 0) break;
+        }
+    }
 }
