@@ -102,9 +102,9 @@ void OCV::Play_VideoCapture(VideoCapture cap, string WindowName)
     cv::Mat frame;
     if (cap.isOpened())
     {
-        while (1)
+        for (;;) //while (1)
         {
-            cap >>frame;
+            cap >> frame;
             if (frame.empty())
                 break;
             imshow(WindowName,frame);
