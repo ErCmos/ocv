@@ -2,8 +2,6 @@
 #include "ui_mainwindow.h"
 #include <ocv.h>
 
-//Prueba del control de versiones
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
