@@ -16,10 +16,16 @@ class OCV
 public:
     OCV();
     ~OCV();
+
+    //////////////////// CAPTURA //////////////////////////////////////////////
     cv::VideoCapture OpenVideoFile(std::string dirName, std::string fileName);
     cv::VideoCapture OpenVideoFile(std::string fileName);
     cv::VideoCapture OpenVideoFile(int device);
+    //////////////////// FIN CAPTURA //////////////////////////////////////////
+
+    //////////////////// VISUALIZACIÓN ////////////////////////////////////////
     void Play_VideoCapture(cv::VideoCapture cap, std::string WindowName);
+    //////////////////// FIN VISUALIZACIÓN ////////////////////////////////////
 };
 
 #endif // OCV_H

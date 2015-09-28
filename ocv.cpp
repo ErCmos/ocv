@@ -13,6 +13,8 @@ OCV::~OCV()
 using namespace std;
 using namespace cv;
 
+
+//////////////////// CAPTURA //////////////////////////////////////////////////
 /*!
  * \file ocv.cpp
  * \brief OCV::OpenVideoFile as a sequence of images
@@ -89,7 +91,9 @@ VideoCapture OCV::OpenVideoFile(int device)
     cap.open(device);
     return cap;
 }
+/////////////////////// FIN CAPTURA //////////////////////////////////////////////////
 
+/////////////////////// VISUALIZACIÓN /////////////////////////////////////////////////
 /*!
  * \file ocv.cpp
  * \brief OCV::Play_VideoCapture
@@ -112,3 +116,4 @@ void OCV::Play_VideoCapture(VideoCapture cap, string WindowName)
         }
     }
 }
+/////////////////////// FIN VISUALIZACIÓN /////////////////////////////////////////////
