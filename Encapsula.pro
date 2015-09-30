@@ -16,9 +16,13 @@ LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgproc -lopenc
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    ocv.cpp
+    ocv_descriptor.cpp \
+    ocv_capturer.cpp \
+    ocv_player.cpp
 
 HEADERS  += mainwindow.h \
-    ocv.h
+    ocv_descriptor.h \
+    ocv_capturer.h \
+    ocv_player.h
 
 FORMS    += mainwindow.ui

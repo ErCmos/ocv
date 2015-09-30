@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <ocv.h>
+#include <ocv_capturer.h>
+#include <ocv_player.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,18 +24,20 @@ void MainWindow::on_OpenFileButton_clicked()
 
     ui->OpenFilelabel->setText(fileName);
 
-    OCV Manejador_OCV;
+    OCV_Capturer Manejador_OCV;
     cv::VideoCapture cap=Manejador_OCV.OpenVideoFile(fileName.toStdString());
-    Manejador_OCV.Play_VideoCapture(cap,"Frames");
+    OCV_Player Player;
+    Player.Play_VideoCapture(cap,"Frames");
 }
 
 void MainWindow::on_WebCamButton_clicked()
 {
     ui->OpenFilelabel->setText("Web Cam");
 
-    OCV Manejador_OCV;
+    OCV_Capturer Manejador_OCV;
     cv::VideoCapture cap=Manejador_OCV.OpenVideoFile(0);
-    Manejador_OCV.Play_VideoCapture(cap,"Frames");
+    OCV_Player Player;
+    Player.Play_VideoCapture(cap,"Frames");
 }
 
 void MainWindow::on_SequenceButton_clicked()
@@ -47,11 +50,12 @@ void MainWindow::on_SequenceButton_clicked()
 
     ui->OpenFilelabel->setText(dirName);
 
-    OCV Manejador_OCV;
+    OCV_Capturer Manejador_OCV;
     cv::VideoCapture cap=Manejador_OCV.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
-    Manejador_OCV.Play_VideoCapture(cap,"Frames");
+    OCV_Player Player;
+    Player.Play_VideoCapture(cap,"Frames");
 /*
-    OCV AbreFichero;
+    OCV_Capturer AbreFichero;
 
     cv::VideoCapture cap=AbreFichero.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
     if( cap.isOpened() )

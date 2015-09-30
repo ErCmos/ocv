@@ -1,11 +1,11 @@
-#include "ocv.h"
+#include "ocv_capturer.h"
 
-OCV::OCV()
+OCV_Capturer::OCV_Capturer()
 {
 
 }
 
-OCV::~OCV()
+OCV_Capturer::~OCV_Capturer()
 {
 
 }
@@ -16,14 +16,14 @@ using namespace cv;
 
 //////////////////// CAPTURA //////////////////////////////////////////////////
 /*!
- * \file ocv.cpp
+ * \file ocv_capturer.cpp
  * \brief OCV::OpenVideoFile as a sequence of images
  * \param dirName Nombre del Directorio de la secuencia
  * \param fileName nombre base de la secuencia
  * \author ErCmos
  * \return cap VideoCapturer
  */
-VideoCapture OCV::OpenVideoFile(string dirName, string fileName)
+VideoCapture OCV_Capturer::OpenVideoFile(string dirName, string fileName)
 {
     VideoCapture cap;
     string extension = "";
@@ -70,7 +70,7 @@ VideoCapture OCV::OpenVideoFile(string dirName, string fileName)
  * \author ErCmos
  * \return cap VideoCapturer
  */
-VideoCapture OCV::OpenVideoFile(string fileName)
+VideoCapture OCV_Capturer::OpenVideoFile(string fileName)
 {
     VideoCapture cap;
     cap.open(fileName);
@@ -85,38 +85,13 @@ VideoCapture OCV::OpenVideoFile(string fileName)
  * \return cap VideoCApturer
  */
 
-VideoCapture OCV::OpenVideoFile(int device)
+VideoCapture OCV_Capturer::OpenVideoFile(int device)
 {
     VideoCapture cap; /**< Instancia del capturador */
     cap.open(device);
     return cap;
 }
 /////////////////////// FIN CAPTURA //////////////////////////////////////////////////
-
-/////////////////////// VISUALIZACIÓN /////////////////////////////////////////////////
-/*!
- * \file ocv.cpp
- * \brief OCV::Play_VideoCapture
- * \param cap VideoCapture
- * \author ErCmos
- * \return void
- */
-void OCV::Play_VideoCapture(VideoCapture cap, string WindowName)
-{
-    cv::Mat frame;
-    if (cap.isOpened())
-    {
-        for (;;) //while (1)
-        {
-            cap >> frame;
-            if (frame.empty())
-                break;
-            imshow(WindowName,frame);
-            if(cv::waitKey(30) >= 0) break;
-        }
-    }
-}
-/////////////////////// FIN VISUALIZACIÓN /////////////////////////////////////////////
 
 //////////////////// DESCRIPTORES /////////////////////////////////////////////////////
 

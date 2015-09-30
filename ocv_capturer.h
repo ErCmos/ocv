@@ -1,5 +1,5 @@
-#ifndef OCV_H
-#define OCV_H
+#ifndef OCV_CAPTURER_H
+#define OCV_CAPTURER_H
 
 #include <opencv2/opencv.hpp>
 #include <string.h>
@@ -7,15 +7,15 @@
 //! Clase para encapsular OpenCV
 
 /*!
- * \file ocv.h
- * \brief The OCV class Clase para encapsular OpenCV en sus métodos más empleados
+ * \file ocv_capturer.h
+ * \brief Clase para encapsular la captura con OpenCV en sus métodos más empleados
  * \author ErCmos
  */
-class OCV
+class OCV_Capturer
 {
 public:
-    OCV();
-    ~OCV();
+    OCV_Capturer();
+    ~OCV_Capturer();
 
     //////////////////// CAPTURA //////////////////////////////////////////////
     cv::VideoCapture OpenVideoFile(std::string dirName, std::string fileName);
@@ -23,13 +23,9 @@ public:
     cv::VideoCapture OpenVideoFile(int device);
     //////////////////// FIN CAPTURA //////////////////////////////////////////
 
-    //////////////////// VISUALIZACIÓN ////////////////////////////////////////
-    void Play_VideoCapture(cv::VideoCapture cap, std::string WindowName);
-    //////////////////// FIN VISUALIZACIÓN ////////////////////////////////////
-
     //////////////////// DESCRIPTORES /////////////////////////////////////////
 
     //////////////////// FIN DESCRIPTORES /////////////////////////////////////
 };
 
-#endif // OCV_H
+#endif // OCV_CAPTURER_H
