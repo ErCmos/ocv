@@ -23,6 +23,8 @@ private slots:
 
     void on_SequenceButton_clicked();
 
+    void on_DetectorButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

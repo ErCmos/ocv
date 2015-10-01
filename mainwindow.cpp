@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <ocv_capturer.h>
 #include <ocv_player.h>
+#include <ocv_descriptor.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,6 +17,8 @@ MainWindow::~MainWindow()
 }
 
 using namespace std;
+OCV_Capturer Capturer;
+cv::VideoCapture cap;
 
 void MainWindow::on_OpenFileButton_clicked()
 {
@@ -24,8 +27,9 @@ void MainWindow::on_OpenFileButton_clicked()
 
     ui->OpenFilelabel->setText(fileName);
 
-    OCV_Capturer Capturer;
-    cv::VideoCapture cap=Capturer.OpenVideoFile(fileName.toStdString());
+    //OCV_Capturer Capturer;
+    //cv::VideoCapture cap=Capturer.OpenVideoFile(fileName.toStdString());
+    cap=Capturer.OpenVideoFile(fileName.toStdString());
     OCV_Player Player;
     Player.Play_VideoCapture(cap,"Frames");
 }
@@ -34,8 +38,9 @@ void MainWindow::on_WebCamButton_clicked()
 {
     ui->OpenFilelabel->setText("Web Cam");
 
-    OCV_Capturer Capturer;
-    cv::VideoCapture cap=Capturer.OpenVideoFile(0);
+    //OCV_Capturer Capturer;
+    //cv::VideoCapture cap=Capturer.OpenVideoFile(0);
+    cap=Capturer.OpenVideoFile(0);
     OCV_Player Player;
     Player.Play_VideoCapture(cap,"Frames");
 }
@@ -50,8 +55,9 @@ void MainWindow::on_SequenceButton_clicked()
 
     ui->OpenFilelabel->setText(dirName);
 
-    OCV_Capturer Capturer;
-    cv::VideoCapture cap=Capturer.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
+    //OCV_Capturer Capturer;
+    //cv::VideoCapture cap=Capturer.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
+    cap=Capturer.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
     OCV_Player Player;
     Player.Play_VideoCapture(cap,"Frames");
 /*
@@ -78,4 +84,18 @@ void MainWindow::on_SequenceButton_clicked()
             if(cv::waitKey(30) >= 0) break;
         }
     }*/
+}
+
+void MainWindow::on_DetectorButton_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+            tr("Open Video"), "/home/ercmos", tr("Video Files (*.avi *.mpg *.mp4 *.*)"));
+
+    ui->OpenFilelabel->setText(fileName);
+
+    //OCV_Capturer Capturer;
+    //cv::VideoCapture cap=Capturer.OpenVideoFile(fileName.toStdString());
+    cap=Capturer.OpenVideoFile(fileName.toStdString());
+    OCV_Descriptor Detector;
+    Detector.Detector(cap);
 }

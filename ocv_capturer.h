@@ -2,6 +2,7 @@
 #define OCV_CAPTURER_H
 
 #include <opencv2/opencv.hpp>
+#include "opencv2/videoio.hpp"
 #include <string.h>
 
 //! Clase para encapsular OpenCV
