@@ -24,8 +24,8 @@ void MainWindow::on_OpenFileButton_clicked()
 
     ui->OpenFilelabel->setText(fileName);
 
-    OCV_Capturer Manejador_OCV;
-    cv::VideoCapture cap=Manejador_OCV.OpenVideoFile(fileName.toStdString());
+    OCV_Capturer Capturer;
+    cv::VideoCapture cap=Capturer.OpenVideoFile(fileName.toStdString());
     OCV_Player Player;
     Player.Play_VideoCapture(cap,"Frames");
 }
@@ -34,8 +34,8 @@ void MainWindow::on_WebCamButton_clicked()
 {
     ui->OpenFilelabel->setText("Web Cam");
 
-    OCV_Capturer Manejador_OCV;
-    cv::VideoCapture cap=Manejador_OCV.OpenVideoFile(0);
+    OCV_Capturer Capturer;
+    cv::VideoCapture cap=Capturer.OpenVideoFile(0);
     OCV_Player Player;
     Player.Play_VideoCapture(cap,"Frames");
 }
@@ -50,8 +50,8 @@ void MainWindow::on_SequenceButton_clicked()
 
     ui->OpenFilelabel->setText(dirName);
 
-    OCV_Capturer Manejador_OCV;
-    cv::VideoCapture cap=Manejador_OCV.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
+    OCV_Capturer Capturer;
+    cv::VideoCapture cap=Capturer.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
     OCV_Player Player;
     Player.Play_VideoCapture(cap,"Frames");
 /*

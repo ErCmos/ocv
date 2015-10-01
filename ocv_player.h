@@ -4,6 +4,11 @@
 #include <opencv2/opencv.hpp>
 #include <string.h>
 
+/*!
+ * \file ocv_player.h
+ * \brief Clase para encapsular el reproductor de OpenCV en sus métodos más empleados
+ * \author ErCmos
+ */
 class OCV_Player
 {
 public:

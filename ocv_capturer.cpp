@@ -13,7 +13,6 @@ OCV_Capturer::~OCV_Capturer()
 using namespace std;
 using namespace cv;
 
-
 //////////////////// CAPTURA //////////////////////////////////////////////////
 /*!
  * \file ocv_capturer.cpp
@@ -29,8 +28,8 @@ VideoCapture OCV_Capturer::OpenVideoFile(string dirName, string fileName)
     string extension = "";
     string fichero = "";
     string temp;
-    unsigned int i;
-    unsigned int a;
+    unsigned int i=0;
+    unsigned int a=0;
     if(fileName.find_last_of(".") != std::string::npos)
             extension = fileName.substr(fileName.find_last_of(".")+1);
             fichero = fileName.substr(0,fileName.find_last_of("."));
@@ -52,13 +51,20 @@ VideoCapture OCV_Capturer::OpenVideoFile(string dirName, string fileName)
                     }
                 }
 ////////////////////////////////////////////////////////////////////////////////
+    string ruta2="";
+    if (a!=0)
+    {
+        string secuencia="";
 
-    string secuencia;
-
-    ostringstream convert;   // stream used for the conversion
-    convert << (a-i);      // insert the textual representation of 'Number' in the characters in the stream
-    secuencia = convert.str(); // set 'secuencia' to the contents of the stream
-    string ruta2 = dirName+"/"+fichero.substr(0,i)+"%"+secuencia+"d."+extension;
+        ostringstream convert;   // stream used for the conversion
+        convert << (a-i);      // insert the textual representation of 'Number' in the characters in the stream
+        secuencia = convert.str(); // set 'secuencia' to the contents of the stream
+        ruta2 = dirName+"/"+fichero.substr(0,i)+"%"+secuencia+"d."+extension;
+    }
+    else
+    {
+        ruta2 = dirName+"/"+fileName;
+    }
 
     cap.open(ruta2);
     return cap;
@@ -93,6 +99,3 @@ VideoCapture OCV_Capturer::OpenVideoFile(int device)
 }
 /////////////////////// FIN CAPTURA //////////////////////////////////////////////////
 
-//////////////////// DESCRIPTORES /////////////////////////////////////////////////////
-
-//////////////////// FIN DESCRIPTORES /////////////////////////////////////////////////
