@@ -6,7 +6,6 @@
 
 /**
  * @brief The OCV_Player class encapsulates most used OpenCV functions for player
- * author ErCmos
  */
 class OCV_Player
 {

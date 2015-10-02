@@ -10,19 +10,11 @@ OCV_Player::~OCV_Player()
 
 }
 
-
 using namespace std;
 using namespace cv;
 
-
 /////////////////////// VISUALIZACIÓN /////////////////////////////////////////////////
-/*!
- * \file ocv_player.cpp
- * \brief OCV::Play_VideoCapture
- * \param cap VideoCapture
- * \author ErCmos
- * \return void
- */
+
 void OCV_Player::Play_VideoCapture(VideoCapture cap, string WindowName)
 {
     cv::Mat frame;

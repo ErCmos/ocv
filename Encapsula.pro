@@ -18,11 +18,13 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     ocv_descriptor.cpp \
     ocv_capturer.cpp \
-    ocv_player.cpp
+    ocv_player.cpp \
+    ocv_detector.cpp
 
 HEADERS  += mainwindow.h \
     ocv_descriptor.h \
     ocv_capturer.h \
-    ocv_player.h
+    ocv_player.h \
+    ocv_detector.h
 
 FORMS    += mainwindow.ui

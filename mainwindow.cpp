@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <ocv_capturer.h>
 #include <ocv_player.h>
+#include <ocv_detector.h>
 #include <ocv_descriptor.h>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -96,6 +97,6 @@ void MainWindow::on_DetectorButton_clicked()
     //OCV_Capturer Capturer;
     //cv::VideoCapture cap=Capturer.OpenVideoFile(fileName.toStdString());
     cap=Capturer.OpenVideoFile(fileName.toStdString());
-    OCV_Descriptor Detector;
+    OCV_Detector Detector;
     Detector.Detector(cap);
 }

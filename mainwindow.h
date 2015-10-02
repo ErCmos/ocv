@@ -7,12 +7,18 @@
 namespace Ui {
 class MainWindow;
 }
-
+/**
+ * @brief The MainWindow class Clase principal del Programa
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
+    /**
+     * @brief MainWindow Constructor de la clase principal
+     * @param parent De la ventana principal
+     */
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
