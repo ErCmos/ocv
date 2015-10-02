@@ -4,10 +4,9 @@
 #include <opencv2/opencv.hpp>
 #include <string.h>
 
-/*!
- * \file ocv_player.h
- * \brief Clase para encapsular el reproductor de OpenCV en sus métodos más empleados
- * \author ErCmos
+/**
+ * @brief The OCV_Player class encapsulates most used OpenCV functions for player
+ * author ErCmos
  */
 class OCV_Player
 {
@@ -16,6 +15,11 @@ public:
     ~OCV_Player();
 
     //////////////////// VISUALIZACIÓN ////////////////////////////////////////
+    /**
+    * @brief Play_VideoCapture
+    * @param cap VideoCapturer to be played
+    * @param WindowName Name for the display window
+    */
     void Play_VideoCapture(cv::VideoCapture cap, std::string WindowName);
     //////////////////// FIN VISUALIZACIÓN ////////////////////////////////////
 };

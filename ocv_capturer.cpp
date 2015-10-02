@@ -14,14 +14,7 @@ using namespace std;
 using namespace cv;
 
 //////////////////// CAPTURA //////////////////////////////////////////////////
-/*!
- * \file ocv_capturer.cpp
- * \brief OCV::OpenVideoFile as a sequence of images
- * \param dirName Nombre del Directorio de la secuencia
- * \param fileName nombre base de la secuencia
- * \author ErCmos
- * \return cap VideoCapturer
- */
+
 VideoCapture OCV_Capturer::OpenVideoFile(string dirName, string fileName)
 {
     VideoCapture cap;
@@ -69,13 +62,7 @@ VideoCapture OCV_Capturer::OpenVideoFile(string dirName, string fileName)
     cap.open(ruta2);
     return cap;
 }
-/*!
- * \file ocv.cpp
- * \brief OCV::OpenVideoFile as a single video file
- * \param fileName Video Filename
- * \author ErCmos
- * \return cap VideoCapturer
- */
+
 VideoCapture OCV_Capturer::OpenVideoFile(string fileName)
 {
     VideoCapture cap;
@@ -83,17 +70,9 @@ VideoCapture OCV_Capturer::OpenVideoFile(string fileName)
     return cap;
 }
 
-/*!
- * \file ocv.cpp
- * \brief OCV::OpenVideoFile as device -> WebCam
- * \param device Device Number
- * \author ErCmos
- * \return cap VideoCApturer
- */
-
 VideoCapture OCV_Capturer::OpenVideoFile(int device)
 {
-    VideoCapture cap; /**< Instancia del capturador */
+    VideoCapture cap;
     cap.open(device);
     return cap;
 }

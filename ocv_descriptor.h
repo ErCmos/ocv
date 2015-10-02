@@ -14,6 +14,10 @@
 #include "opencv2/xfeatures2d.hpp"
 //#include "opencv2/highgui.hpp"
 
+/**
+ * @brief The OCV_Descriptor class encapsulates most used OpenCV functions for Detectors and Descriptors
+ * @author ErCmos
+ */
 class OCV_Descriptor
 {
 public:
@@ -22,6 +26,10 @@ public:
 
 
     //////////////////// DETECTORES /////////////////////////////////////////
+    /**
+    * @brief Detector Detector definition
+    * @param cap
+    */
     void Detector(cv::VideoCapture cap);
     //////////////////// FIN DETECTORES /////////////////////////////////////
     ///

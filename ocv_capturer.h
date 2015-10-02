@@ -5,22 +5,38 @@
 #include "opencv2/videoio.hpp"
 #include <string.h>
 
-//! Clase para encapsular OpenCV
-
-/*!
- * \file ocv_capturer.h
- * \brief Clase para encapsular la captura con OpenCV en sus métodos más empleados
- * \author ErCmos
+/**
+ * @brief The OCV_Capturer class encapsulates most used OpenCV functions for capture
+ * @author ErCmos
  */
 class OCV_Capturer
 {
 public:
+    /**
+     * @brief Constructor of the Class OCV_Capturer
+     */
     OCV_Capturer();
     ~OCV_Capturer();
 
     //////////////////// CAPTURA //////////////////////////////////////////////
+    /**
+     * @brief OpenVideoFile
+     * @param dirName where file is located
+     * @param fileName to be opened
+     * @return VideoCapturer Returned
+     */
     cv::VideoCapture OpenVideoFile(std::string dirName, std::string fileName);
+    /**
+     * @brief OpenVideoFile
+     * @param fileName to be opened
+     * @return VideoCapturer returned
+     */
     cv::VideoCapture OpenVideoFile(std::string fileName);
+    /**
+     * @brief OpenVideoFile
+     * @param device or WebCam to be opened
+     * @return VideoCapturer returned
+     */
     cv::VideoCapture OpenVideoFile(int device);
     //////////////////// FIN CAPTURA //////////////////////////////////////////
 };
