@@ -4,6 +4,9 @@
 #include <ocv_player.h>
 #include <ocv_detector.h>
 #include <ocv_descriptor.h>
+#include "opencv2/videoio.hpp"
+#include "opencv2/features2d.hpp"
+#include "opencv2/xfeatures2d.hpp"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -98,5 +101,24 @@ void MainWindow::on_DetectorButton_clicked()
     //cv::VideoCapture cap=Capturer.OpenVideoFile(fileName.toStdString());
     cap=Capturer.OpenVideoFile(fileName.toStdString());
     OCV_Detector Detector;
-    Detector.Detector(cap);
+    OCV_Player Player;
+    std::vector<cv::KeyPoint> keypoints_1;
+    cv::Mat img_keypoints_1, img_1, frame;
+    if (cap.isOpened())
+    {
+        for(;;)
+        {
+            keypoints_1=Detector.DetectorSURF2(cap);
+            //Detector.DetectorSURF(cap);
+            //-- Draw keypoints
+            cap >> frame;
+            //cvtColor(frame,img_1,CV_BGR2GRAY);
+            Player.Play_VideoCapture(cap,"Imagen");
+            //imshow("Imagen en BN",frame);
+            drawKeypoints( img_1, keypoints_1, img_keypoints_1, cv::Scalar::all(-1), cv::DrawMatchesFlags::DEFAULT );
+            //-- Show detected (drawn) keypoints
+            imshow("Keypoints 1", img_keypoints_1 );
+             if(cv::waitKey(30) >= 0) break;
+        }
+    }
 }

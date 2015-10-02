@@ -8,7 +8,7 @@
 #include "opencv2/xfeatures2d.hpp"
 
 /**
- * @brief The OCV_Descriptor class encapsulates most used OpenCV functions for Detectors
+ * @brief The OCV_Detector class encapsulates most used OpenCV functions for Detectors
  * @author ErCmos
  */
 class OCV_Detector
@@ -22,7 +22,11 @@ public:
     * @brief Detector Detector definition
     * @param cap VideoCapturer to be used
     */
-    void Detector(cv::VideoCapture cap);
+    void DetectorSIFT(cv::VideoCapture cap);
+
+    void DetectorSURF(cv::VideoCapture cap);
+
+    std::vector<cv::KeyPoint> DetectorSURF2(cv::VideoCapture cap);
     //////////////////// FIN DETECTORES /////////////////////////////////////
     ///
 };
