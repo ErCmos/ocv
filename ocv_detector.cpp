@@ -74,7 +74,7 @@ void OCV_Detector::DetectorSURF(VideoCapture cap)
         }
     }
 }
-
+/*
 std::vector<KeyPoint> OCV_Detector::DetectorSURF2(VideoCapture cap, Mat &frame)
 {
     Mat img_1,prv_frame;
@@ -98,21 +98,34 @@ std::vector<KeyPoint> OCV_Detector::DetectorSURF2(VideoCapture cap, Mat &frame)
             //imshow("Imagen en BN",img_1);
             detector->detect( img_1, keypoints_1 );
             prv_frame=frame;
-            /*
+
             //-- Draw keypoints
-            Mat img_keypoints_1;
-            drawKeypoints( img_1, keypoints_1, img_keypoints_1, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
+            //Mat img_keypoints_1;
+            //drawKeypoints( img_1, keypoints_1, img_keypoints_1, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
             //-- Show detected (drawn) keypoints
-            imshow("Keypoints 1", img_keypoints_1 );
+            //imshow("Keypoints 1", img_keypoints_1 );
             //waitKey(0);
 
-            if(cv::waitKey(30) >= 0) break;
-            */
+            //f(cv::waitKey(30) >= 0) break;
+
         }
     }
 
     return keypoints_1;
 }
+*/
+std::vector<KeyPoint> OCV_Detector::DetectorSURF2(Mat frame)
+{
+    Mat img_1;
+    int minHessian = 400;
+    Ptr<SURF> detector = SURF::create( minHessian );
+    std::vector<KeyPoint> keypoints_1;
 
+    //-- Step 1: Detect the keypoints using SURF Detector
+    cvtColor(frame,img_1,CV_BGR2GRAY);
+    detector->detect( img_1, keypoints_1 );
+
+    return keypoints_1;
+}
 //////////////////// FIN DETECTORES /////////////////////////////////////////////////
 ///

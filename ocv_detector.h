@@ -27,7 +27,8 @@ public:
 
     void DetectorSURF(cv::VideoCapture cap);
 
-    std::vector<cv::KeyPoint> DetectorSURF2(cv::VideoCapture cap,cv::Mat &frame);
+    std::vector<cv::KeyPoint> DetectorSURF2(cv::Mat frame);
+    //std::vector<cv::KeyPoint> DetectorSURF2(cv::VideoCapture cap,cv::Mat &frame);
     //////////////////// FIN DETECTORES /////////////////////////////////////
     ///
 };
