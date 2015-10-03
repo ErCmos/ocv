@@ -7,6 +7,7 @@
 #include "opencv2/features2d.hpp"
 #include "opencv2/xfeatures2d.hpp"
 
+
 /**
  * @brief The OCV_Detector class encapsulates most used OpenCV functions for Detectors
  * @author ErCmos
@@ -26,7 +27,7 @@ public:
 
     void DetectorSURF(cv::VideoCapture cap);
 
-    std::vector<cv::KeyPoint> DetectorSURF2(cv::VideoCapture cap);
+    std::vector<cv::KeyPoint> DetectorSURF2(cv::VideoCapture cap,cv::Mat &frame);
     //////////////////// FIN DETECTORES /////////////////////////////////////
     ///
 };

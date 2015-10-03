@@ -22,7 +22,7 @@ MainWindow::~MainWindow()
 
 using namespace std;
 OCV_Capturer Capturer;
-cv::VideoCapture cap;
+cv::VideoCapture capturador;
 
 void MainWindow::on_OpenFileButton_clicked()
 {
@@ -33,9 +33,9 @@ void MainWindow::on_OpenFileButton_clicked()
 
     //OCV_Capturer Capturer;
     //cv::VideoCapture cap=Capturer.OpenVideoFile(fileName.toStdString());
-    cap=Capturer.OpenVideoFile(fileName.toStdString());
+    capturador=Capturer.OpenVideoFile(fileName.toStdString());
     OCV_Player Player;
-    Player.Play_VideoCapture(cap,"Frames");
+    Player.Play_VideoCapture(capturador,"Frames");
 }
 
 void MainWindow::on_WebCamButton_clicked()
@@ -44,9 +44,9 @@ void MainWindow::on_WebCamButton_clicked()
 
     //OCV_Capturer Capturer;
     //cv::VideoCapture cap=Capturer.OpenVideoFile(0);
-    cap=Capturer.OpenVideoFile(0);
+    capturador=Capturer.OpenVideoFile(0);
     OCV_Player Player;
-    Player.Play_VideoCapture(cap,"Frames");
+    Player.Play_VideoCapture(capturador,"Frames");
 }
 
 void MainWindow::on_SequenceButton_clicked()
@@ -61,9 +61,9 @@ void MainWindow::on_SequenceButton_clicked()
 
     //OCV_Capturer Capturer;
     //cv::VideoCapture cap=Capturer.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
-    cap=Capturer.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
+    capturador=Capturer.OpenVideoFile(dirName.toStdString(), fileName.toStdString());
     OCV_Player Player;
-    Player.Play_VideoCapture(cap,"Frames");
+    Player.Play_VideoCapture(capturador,"Frames");
 /*
     OCV_Capturer AbreFichero;
 
@@ -99,22 +99,26 @@ void MainWindow::on_DetectorButton_clicked()
 
     //OCV_Capturer Capturer;
     //cv::VideoCapture cap=Capturer.OpenVideoFile(fileName.toStdString());
-    cap=Capturer.OpenVideoFile(fileName.toStdString());
+    capturador=Capturer.OpenVideoFile(fileName.toStdString());
     OCV_Detector Detector;
     OCV_Player Player;
     std::vector<cv::KeyPoint> keypoints_1;
     cv::Mat img_keypoints_1, img_1, frame;
-    if (cap.isOpened())
+    if (capturador.isOpened())
     {
         for(;;)
         {
-            keypoints_1=Detector.DetectorSURF2(cap);
+            keypoints_1=Detector.DetectorSURF2(capturador,frame);
             //Detector.DetectorSURF(cap);
             //-- Draw keypoints
-            cap >> frame;
-            //cvtColor(frame,img_1,CV_BGR2GRAY);
-            Player.Play_VideoCapture(cap,"Imagen");
-            //imshow("Imagen en BN",frame);
+            //capturador >> frame;
+            if (frame.empty())
+            {
+                break;
+            }
+            cvtColor(frame,img_1,CV_BGR2GRAY);
+            //Player.Play_VideoCapture(cap,"Imagen");
+            imshow("Imagen en BN",frame);
             drawKeypoints( img_1, keypoints_1, img_keypoints_1, cv::Scalar::all(-1), cv::DrawMatchesFlags::DEFAULT );
             //-- Show detected (drawn) keypoints
             imshow("Keypoints 1", img_keypoints_1 );
