@@ -1,6 +1,8 @@
 #ifndef OCV_DETECTOR_H
 #define OCV_DETECTOR_H
 
+#include <string.h>
+
 #include "opencv2/core.hpp"
 #include <opencv2/opencv.hpp>
 #include "opencv2/videoio.hpp"
@@ -23,12 +25,15 @@ public:
     * @brief Detector Detector definition
     * @param cap VideoCapturer to be used
     */
-    void DetectorSIFT(cv::VideoCapture cap);
+    //void DetectorSIFT(cv::VideoCapture cap);
 
-    void DetectorSURF(cv::VideoCapture cap);
+    //void DetectorSURF(cv::VideoCapture cap);
 
-    std::vector<cv::KeyPoint> DetectorSURF2(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorSURF(cv::Mat frame);
     //std::vector<cv::KeyPoint> DetectorSURF2(cv::VideoCapture cap,cv::Mat &frame);
+    std::vector<cv::KeyPoint> DetectorSIFT(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorBRISK(cv::Mat frame);
+    std::vector<cv::KeyPoint> Detector(cv::Mat frame, std::string Tipo_Detector);
     //////////////////// FIN DETECTORES /////////////////////////////////////
     ///
 };

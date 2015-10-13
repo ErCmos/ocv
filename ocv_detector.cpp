@@ -14,7 +14,7 @@ using namespace cv;
 using namespace cv::xfeatures2d;
 
 //////////////////// DETECTORES /////////////////////////////////////////////////////
-
+/*
 void OCV_Detector::DetectorSIFT(VideoCapture cap)
 {
     Mat frame, img_1;
@@ -44,7 +44,8 @@ void OCV_Detector::DetectorSIFT(VideoCapture cap)
         }
     }
 }
-
+*/
+/*
 void OCV_Detector::DetectorSURF(VideoCapture cap)
 {
     Mat frame, img_1;
@@ -74,6 +75,7 @@ void OCV_Detector::DetectorSURF(VideoCapture cap)
         }
     }
 }
+*/
 /*
 std::vector<KeyPoint> OCV_Detector::DetectorSURF2(VideoCapture cap, Mat &frame)
 {
@@ -114,7 +116,7 @@ std::vector<KeyPoint> OCV_Detector::DetectorSURF2(VideoCapture cap, Mat &frame)
     return keypoints_1;
 }
 */
-std::vector<KeyPoint> OCV_Detector::DetectorSURF2(Mat frame)
+std::vector<KeyPoint> OCV_Detector::DetectorSURF(Mat frame)
 {
     Mat img_1;
     int minHessian = 400;
@@ -127,5 +129,52 @@ std::vector<KeyPoint> OCV_Detector::DetectorSURF2(Mat frame)
 
     return keypoints_1;
 }
+
+std::vector<KeyPoint> OCV_Detector::DetectorSIFT(Mat frame)
+{
+    Mat img_1;
+    Ptr<SIFT> detector = SIFT::create();
+    std::vector<KeyPoint> keypoints_1;
+
+    //-- Step 1: Detect the keypoints using SURF Detector
+    cvtColor(frame,img_1,CV_BGR2GRAY);
+    detector->detect( img_1, keypoints_1 );
+
+    return keypoints_1;
+}
+
+std::vector<KeyPoint> OCV_Detector::DetectorBRISK(Mat frame)
+{
+    Mat img_1;
+    Ptr<BRISK> detector = BRISK::create();
+    std::vector<KeyPoint> keypoints_1;
+
+    //-- Step 1: Detect the keypoints using SURF Detector
+    cvtColor(frame,img_1,CV_BGR2GRAY);
+    detector->detect( img_1, keypoints_1 );
+
+    return keypoints_1;
+}
+
+std::vector<KeyPoint> OCV_Detector::Detector(Mat frame, std::string Tipo_Detector)
+{
+    Mat img_1;
+    switch (str2int(Tipo_Detector)) {
+    case value:
+
+        break;
+    default:
+        break;
+    }
+    Ptr<BRISK> detector = BRISK::create();
+    std::vector<KeyPoint> keypoints_1;
+
+    //-- Step 1: Detect the keypoints using SURF Detector
+    cvtColor(frame,img_1,CV_BGR2GRAY);
+    detector->detect( img_1, keypoints_1 );
+
+    return keypoints_1;
+}
+
 //////////////////// FIN DETECTORES /////////////////////////////////////////////////
 ///

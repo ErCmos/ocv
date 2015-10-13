@@ -109,8 +109,9 @@ void MainWindow::on_DetectorButton_clicked()
         for(;;)
         {
             capturador >> frame;
-            keypoints_1=Detector.DetectorSURF2(frame);
-            //Detector.DetectorSURF(cap);
+            keypoints_1=Detector.DetectorBRISK(frame);
+            //keypoints_1=Detector.DetectorSIFT2(frame);
+            //Detector.DetectorSURF(capturador);
             //-- Draw keypoints
             //capturador >> frame;
             if (frame.empty())
