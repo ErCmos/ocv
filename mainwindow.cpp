@@ -109,7 +109,8 @@ void MainWindow::on_DetectorButton_clicked()
         for(;;)
         {
             capturador >> frame;
-            keypoints_1=Detector.DetectorBRISK(frame);
+            keypoints_1=Detector.Detector(frame,"SIFT");
+            //keypoints_1=Detector.DetectorBRISK(frame);
             //keypoints_1=Detector.DetectorSIFT2(frame);
             //Detector.DetectorSURF(capturador);
             //-- Draw keypoints

@@ -15,7 +15,7 @@ using namespace cv;
 
 //////////////////// CAPTURA //////////////////////////////////////////////////
 
-VideoCapture OCV_Capturer::OpenVideoFile(string dirName, string fileName)
+VideoCapture OCV_Capturer::OpenVideoFile(std::string dirName, std::string fileName)
 {
     VideoCapture cap;
     string extension = "";
@@ -63,7 +63,7 @@ VideoCapture OCV_Capturer::OpenVideoFile(string dirName, string fileName)
     return cap;
 }
 
-VideoCapture OCV_Capturer::OpenVideoFile(string fileName)
+VideoCapture OCV_Capturer::OpenVideoFile(std::string fileName)
 {
     VideoCapture cap;
     cap.open(fileName);

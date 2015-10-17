@@ -159,13 +159,35 @@ std::vector<KeyPoint> OCV_Detector::DetectorBRISK(Mat frame)
 std::vector<KeyPoint> OCV_Detector::Detector(Mat frame, std::string Tipo_Detector)
 {
     Mat img_1;
-    switch (str2int(Tipo_Detector)) {
-    case value:
-
-        break;
-    default:
-        break;
+    if (Tipo_Detector=="SURF")
+    {
+        int minHessian = 400;
+        Ptr<SURF> detector = SURF::create( minHessian );
+        std::vector<KeyPoint> keypoints_1;
+        //-- Step 1: Detect the keypoints using SURF Detector
+        cvtColor(frame,img_1,CV_BGR2GRAY);
+        detector->detect( img_1, keypoints_1 );
+        return keypoints_1;
     }
+    else if (Tipo_Detector=="SIFT")
+    {
+        Ptr<SIFT> detector = SIFT::create();
+        std::vector<KeyPoint> keypoints_1;
+        //-- Step 1: Detect the keypoints using SURF Detector
+        cvtColor(frame,img_1,CV_BGR2GRAY);
+        detector->detect( img_1, keypoints_1 );
+        return keypoints_1;
+    }
+    else if (Tipo_Detector=="BRISK")
+    {
+        Ptr<BRISK> detector = BRISK::create();
+        std::vector<KeyPoint> keypoints_1;
+        //-- Step 1: Detect the keypoints using SURF Detector
+        cvtColor(frame,img_1,CV_BGR2GRAY);
+        detector->detect( img_1, keypoints_1 );
+        return keypoints_1;
+    }
+
     Ptr<BRISK> detector = BRISK::create();
     std::vector<KeyPoint> keypoints_1;
 
