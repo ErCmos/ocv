@@ -8,6 +8,7 @@
 #include "opencv2/features2d.hpp"
 #include "opencv2/xfeatures2d.hpp"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -102,6 +103,7 @@ void MainWindow::on_DetectorButton_clicked()
     capturador=Capturer.OpenVideoFile(fileName.toStdString());
     OCV_Detector Detector;
     OCV_Player Player;
+
     std::vector<cv::KeyPoint> keypoints_1;
     cv::Mat img_keypoints_1, img_1, frame;
     if (capturador.isOpened())
@@ -109,9 +111,12 @@ void MainWindow::on_DetectorButton_clicked()
         for(;;)
         {
             capturador >> frame;
-            keypoints_1=Detector.Detector(frame,"SIFT");
+            //keypoints_1=Detector.Detector(frame,"STAR");
+
+
             //keypoints_1=Detector.DetectorBRISK(frame);
-            //keypoints_1=Detector.DetectorSIFT2(frame);
+            keypoints_1=Detector.DetectorSURF(frame);
+
             //Detector.DetectorSURF(capturador);
             //-- Draw keypoints
             //capturador >> frame;
@@ -121,7 +126,7 @@ void MainWindow::on_DetectorButton_clicked()
             }
             cvtColor(frame,img_1,CV_BGR2GRAY);
             //Player.Play_VideoCapture(cap,"Imagen");
-            imshow("Imagen en BN",frame);
+            imshow("Imagen Analizada",frame);
             drawKeypoints( img_1, keypoints_1, img_keypoints_1, cv::Scalar::all(-1), cv::DrawMatchesFlags::DEFAULT );
             //-- Show detected (drawn) keypoints
             imshow("Keypoints 1", img_keypoints_1 );

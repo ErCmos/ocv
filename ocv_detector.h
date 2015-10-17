@@ -9,7 +9,6 @@
 #include "opencv2/features2d.hpp"
 #include "opencv2/xfeatures2d.hpp"
 
-
 /**
  * @brief The OCV_Detector class encapsulates most used OpenCV functions for Detectors
  * @author ErCmos
@@ -29,10 +28,30 @@ public:
 
     //void DetectorSURF(cv::VideoCapture cap);
 
-    std::vector<cv::KeyPoint> DetectorSURF(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorAGAST(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorAGAST(cv::Mat frame, int threshold, bool nonmaxSuppression, int type);
+    std::vector<cv::KeyPoint> DetectorAKAZE(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorAKAZE(cv::Mat frame, int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves, int nOctaveLayers, int diffusivity);
+    std::vector<cv::KeyPoint> DetectorBRISK(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorBRISK(cv::Mat frame, int thresh, int octaves, float patternScale);
+    std::vector<cv::KeyPoint> DetectorBRIEF(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorDAISY(cv::Mat frame);
+
+    std::vector<cv::KeyPoint> DetectorFAST(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorFREAK(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorGFTT(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorKAZE(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorLATCH(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorLUCID(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorMSER(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorORB(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorSBD(cv::Mat frame);
     //std::vector<cv::KeyPoint> DetectorSURF2(cv::VideoCapture cap,cv::Mat &frame);
     std::vector<cv::KeyPoint> DetectorSIFT(cv::Mat frame);
-    std::vector<cv::KeyPoint> DetectorBRISK(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorSTAR(cv::Mat frame);
+    std::vector<cv::KeyPoint> DetectorSURF(cv::Mat frame, double hessianThreshold, int nOctaves, int nOctaveLayers, bool extended, bool upright);
+    std::vector<cv::KeyPoint> DetectorSURF(cv::Mat frame);
+
     std::vector<cv::KeyPoint> Detector(cv::Mat frame, std::string Tipo_Detector);
     //////////////////// FIN DETECTORES /////////////////////////////////////
     ///
