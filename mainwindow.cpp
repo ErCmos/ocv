@@ -111,6 +111,10 @@ void MainWindow::on_DetectorButton_clicked()
         for(;;)
         {
             capturador >> frame;
+            if (frame.empty())
+            {
+                break;
+            }
             //keypoints_1=Detector.Detector(frame,"STAR");
 
 
@@ -120,10 +124,6 @@ void MainWindow::on_DetectorButton_clicked()
             //Detector.DetectorSURF(capturador);
             //-- Draw keypoints
             //capturador >> frame;
-            if (frame.empty())
-            {
-                break;
-            }
             cvtColor(frame,img_1,CV_BGR2GRAY);
             //Player.Play_VideoCapture(cap,"Imagen");
             imshow("Imagen Analizada",frame);
