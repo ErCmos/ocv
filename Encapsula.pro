@@ -12,7 +12,7 @@ TARGET = Encapsula
 TEMPLATE = app
 
 INCLUDEPATH += /usr/local/include/opencv
-LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -lopencv_videoio -lopencv_features2d -lopencv_xfeatures2d -lopencv_calib3d
+LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -lopencv_videoio -lopencv_features2d -lopencv_xfeatures2d -lopencv_calib3d -lopencv_ml -lopencv_optim
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     ocv_player.cpp \
     ocv_detector.cpp \
     bow.cpp \
-    imageonimage.cpp
+    imageonimage.cpp \
+    clasificador_svm.cpp
 
 HEADERS  += mainwindow.h \
     ocv_descriptor.h \
@@ -29,6 +30,7 @@ HEADERS  += mainwindow.h \
     ocv_player.h \
     ocv_detector.h \
     bow.h \
-    imageonimage.h
+    imageonimage.h \
+    clasificador_svm.h
 
 FORMS    += mainwindow.ui
