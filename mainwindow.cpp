@@ -4,6 +4,8 @@
 #include <ocv_player.h>
 #include <ocv_detector.h>
 #include <ocv_descriptor.h>
+#include <bow.h>
+#include <imageonimage.h>
 #include "opencv2/videoio.hpp"
 #include "opencv2/features2d.hpp"
 #include "opencv2/xfeatures2d.hpp"
@@ -133,4 +135,69 @@ void MainWindow::on_DetectorButton_clicked()
              if(cv::waitKey(30) >= 0) break;
         }
     }
+}
+
+void MainWindow::on_Crea_DiccionarioButton_clicked()
+{
+    QString fullName = QFileDialog::getOpenFileName(this,
+            tr("Open Video"), "/home/ercmos", tr("Video Files (*.avi *.mpg *.mp4 *.*)"));
+
+    QString dirName = QFileInfo(fullName).absolutePath();
+    QString fileName=QFileInfo(fullName).fileName();
+
+    ui->OpenFilelabel->setText(dirName);
+    BoW Diccionario;
+    Diccionario.CrearDiccionario(dirName.toStdString());
+    Diccionario.TageadorDiccionario(dirName.toStdString(),fileName.toStdString());
+}
+
+void MainWindow::on_BuscaImagenEnImagenButton_clicked()
+{
+    QString fullName = QFileDialog::getOpenFileName(this,
+            tr("Open Video"), "/home/ercmos", tr("Video Files (*.avi *.mpg *.mp4 *.*)"));
+
+    QString fileName=fullName;
+
+    fullName = QFileDialog::getOpenFileName(this,
+            tr("Open Video"), "/home/ercmos", tr("Video Files (*.avi *.mpg *.mp4 *.*)"));
+
+    QString fileName2=fullName;
+
+    ui->OpenFilelabel->setText(fileName);
+    ImageOnImage imagen;
+    imagen.Detecta(fileName.toStdString(),fileName2.toStdString());
+}
+
+void MainWindow::on_ImagenEnImagenButton_clicked()
+{
+    QString fullName = QFileDialog::getOpenFileName(this,
+            tr("Open Video"), "/home/ercmos", tr("Video Files (*.avi *.mpg *.mp4 *.*)"));
+
+    QString fileName=QFileInfo(fullName).fileName();
+
+    fullName = QFileDialog::getOpenFileName(this,
+            tr("Open Video"), "/home/ercmos", tr("Video Files (*.avi *.mpg *.mp4 *.*)"));
+
+    QString fileName2=QFileInfo(fullName).fileName();
+
+    ui->OpenFilelabel->setText(fileName);
+    ImageOnImage imagen;
+    imagen.Detecta(fileName.toStdString(),fileName2.toStdString());
+}
+
+void MainWindow::on_BoFButton_clicked()
+{
+    QString fullName = QFileDialog::getOpenFileName(this,
+            tr("Open Video"), "/home/ercmos", tr("Video Files (*.avi *.mpg *.mp4 *.*)"));
+
+    QString fileName=QFileInfo(fullName).fileName();
+
+    fullName = QFileDialog::getOpenFileName(this,
+            tr("Open Video"), "/home/ercmos", tr("Video Files (*.avi *.mpg *.mp4 *.*)"));
+
+    QString fileName2=QFileInfo(fullName).fileName();
+
+    ui->OpenFilelabel->setText(fileName);
+    ImageOnImage imagen;
+    imagen.Detecta(fileName.toStdString(),fileName2.toStdString());
 }

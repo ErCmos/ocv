@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>434</width>
-    <height>193</height>
+    <width>470</width>
+    <height>307</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -86,13 +86,65 @@
      <string>Detector</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="Crea_DiccionarioButton">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>80</y>
+      <width>121</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Crea Diccionario</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BuscaImagenEnImagenButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>110</y>
+      <width>231</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Busca Imagen en Imagen</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ImagenEnImagenButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>140</y>
+      <width>231</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Busca Imagen en Imagen</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BoFButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>170</y>
+      <width>231</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Busca Imagen en Imagen</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>434</width>
+     <width>470</width>
      <height>20</height>
     </rect>
    </property>

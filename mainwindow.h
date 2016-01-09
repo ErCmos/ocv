@@ -31,6 +31,14 @@ private slots:
 
     void on_DetectorButton_clicked();
 
+    void on_Crea_DiccionarioButton_clicked();
+
+    void on_BoFButton_clicked();
+
+    void on_BuscaImagenEnImagenButton_clicked();
+
+    void on_ImagenEnImagenButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
